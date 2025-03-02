@@ -1,6 +1,6 @@
 * create installation
   * name
-  * type
+  * template
   * created date
   * status
   * updated date
@@ -17,7 +17,7 @@
     * comment
     * add file
 
-* installation type
+* installation template
   * name
   * installation item
     * name 
