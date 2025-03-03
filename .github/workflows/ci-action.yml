@@ -21,6 +21,7 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '21'
+          cache: 'maven'
       - name: Build with Maven
         run: mvn -B package
       # Runs a set of commands using the runners shell
