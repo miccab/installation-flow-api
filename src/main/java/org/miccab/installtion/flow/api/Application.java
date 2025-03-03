@@ -1,4 +1,4 @@
-package org.miccab.installtion.flow;
+package org.miccab.installtion.flow.api;
 
 import io.micronaut.runtime.Micronaut;
 

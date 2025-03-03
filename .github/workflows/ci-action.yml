@@ -22,9 +22,9 @@ jobs:
           distribution: 'temurin'
           java-version: '21'
           cache: 'maven'
-#      - uses: stCarolas/setup-maven@v5
-#        with:
-#          maven-version: 3.9.9
+      - uses: stCarolas/setup-maven@v5
+        with:
+          maven-version: 3.9.9
       - name: Build with Maven
         run: mvn -B package
       # Runs a set of commands using the runners shell
@@ -43,9 +43,5 @@ jobs:
       - name: SAM Build
         run: sam build
       - name: SAM Deploy
-        run: |
-            sam deploy \
-            --stack-name installation-flow-api-${{ vars.ENVIRONMENT }} \
-            --capabilities CAPABILITY_IAM \
-            --parameter-overrides Environment=${{ vars.ENVIRONMENT }}
+        run: sam deploy --stack-name installation-flow-api-${{ vars.ENVIRONMENT }} --capabilities CAPABILITY_IAM --parameter-overrides Environment=${{ vars.ENVIRONMENT }} --no-fail-on-empty-changeset --no-confirm-changeset
 
