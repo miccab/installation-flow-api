@@ -43,7 +43,8 @@ jobs:
       - name: SAM Build
         run: sam build
       - name: SAM Deploy
-        run: sam deploy \
+        run: |
+            sam deploy \
             --stack-name installation-flow-api-${{ vars.ENVIRONMENT }} \
             --capabilities CAPABILITY_IAM \
             --parameter-overrides Environment=${{ vars.ENVIRONMENT }}
