@@ -25,7 +25,7 @@ Resources:
     Type: AWS::Serverless::Function
     Properties:
       Handler: io.micronaut.function.aws.MicronautRequestStreamHandler
-      CodeUri: target/
+      CodeUri: .
       Policies:
         - AWSLambdaBasicExecutionRole
       Events:
