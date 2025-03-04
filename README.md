@@ -53,7 +53,10 @@ AWS infra
         {
             "Sid": "VisualEditor0",
             "Effect": "Allow",
-            "Action": "iam:CreateRole",
+            "Action": [
+                "iam:CreateRole",
+                "iam:TagRole"
+            ],
             "Resource": "arn:aws:iam::051826737436:role/*"
         }
     ]
