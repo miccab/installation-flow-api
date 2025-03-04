@@ -1,8 +1,6 @@
 name: CI
 
-# Controls when the workflow will run
 on:
-  # Triggers the workflow on push or pull request events but only for the "main" branch
   push:
     branches: [ "main" ]
   pull_request:
@@ -27,7 +25,6 @@ jobs:
           maven-version: 3.9.9
       - name: Build with Maven
         run: mvn -B package
-      # Runs a set of commands using the runners shell
       - name: Run a multi-line script
         run: |
           echo Add other actions to build,
