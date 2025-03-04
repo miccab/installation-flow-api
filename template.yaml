@@ -29,7 +29,7 @@ Resources:
   MicronautLambdaFunction:
     Type: AWS::Serverless::Function
     Properties:
-      Handler: io.micronaut.function.aws.MicronautRequestStreamHandler
+      Handler: io.micronaut.function.aws.proxy.payload1.ApiGatewayProxyRequestEventFunction
       CodeUri: target/installation-flow-api-1.0-SNAPSHOT.jar
       Policies:
         - AWSLambdaBasicExecutionRole

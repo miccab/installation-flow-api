@@ -63,3 +63,4 @@ AWS infra
 }
 ```
 * create S3 bucket
+* follow guide: https://micronaut-projects.github.io/micronaut-aws/4.8.0/guide/#amazonApiGateway
