@@ -1,3 +1,5 @@
 micronaut:
   application:
     name: installation-flow-api
+  server:
+    context-path: /${MICRONAUT_ENVIRONMENTS}
