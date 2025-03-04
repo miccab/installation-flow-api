@@ -2,5 +2,3 @@ micronaut:
   application:
     name: installation-flow-api
 
-logger:
-  root: DEBUG
