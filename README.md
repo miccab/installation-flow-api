@@ -1,3 +1,5 @@
+# Business requirements
+
 * create installation
   * name
   * template
@@ -22,7 +24,20 @@
   * installation item
     * name 
 
-AWS infra
+# Tech todo
+
+https://docs.aws.amazon.com/lambda/latest/dg/foundation-iac.html
+
+* add tests
+* setup authorizer
+  * https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-use-lambda-authorizer.html
+  * aws cognito
+* use http api (not api) which is cheaper apparently
+* setup and connect to DB
+
+
+# AWS infra
+
 * create IAM user
 * policy: lambda full, cloudformation full
 * add policy to put object in S3 bucket
@@ -64,3 +79,4 @@ AWS infra
 ```
 * create S3 bucket
 * follow guide: https://micronaut-projects.github.io/micronaut-aws/4.8.0/guide/#amazonApiGateway
+* best to create app using micronaout launcher
