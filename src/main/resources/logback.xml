@@ -14,6 +14,6 @@
     </root>
 
     <logger name="io.micronaut" level="DEBUG"/>
-    <logger name="org.miccab.installtion.flow.api" level="DEBUG"/>
+    <logger name="org.miccab.installation.flow.api" level="DEBUG"/>
 
 </configuration>

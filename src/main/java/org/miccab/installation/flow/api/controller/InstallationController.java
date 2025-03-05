@@ -1,4 +1,4 @@
-package org.miccab.installtion.flow.api.controller;
+package org.miccab.installation.flow.api.controller;
 
 import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Get;

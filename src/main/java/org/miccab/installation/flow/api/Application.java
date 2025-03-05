@@ -1,4 +1,4 @@
-package org.miccab.installtion.flow.api;
+package org.miccab.installation.flow.api;
 
 import io.micronaut.runtime.Micronaut;
 import org.slf4j.Logger;

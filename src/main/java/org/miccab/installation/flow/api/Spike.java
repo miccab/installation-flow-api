@@ -1,4 +1,4 @@
-package org.miccab.installtion.flow.api;
+package org.miccab.installation.flow.api;
 
 import jakarta.inject.Singleton;
 import org.slf4j.Logger;
