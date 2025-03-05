@@ -19,16 +19,19 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '21'
-          cache: 'maven'
       - uses: stCarolas/setup-maven@v5
         with:
           maven-version: 3.9.9
+      - name: Restore Maven cache
+        uses: skjolber/maven-cache-github-action@v3.1.2
+        with:
+          step: restore
       - name: Build with Maven
         run: mvn -B package
-      - name: Run a multi-line script
-        run: |
-          echo Add other actions to build,
-          export
+      - name: Save Maven cache
+        uses: skjolber/maven-cache-github-action@v3.1.2
+        with:
+          step: save
       - uses: aws-actions/configure-aws-credentials@v4
         with:
           aws-region: ${{ vars.AWS_REGION }}
