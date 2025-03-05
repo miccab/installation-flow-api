@@ -28,6 +28,7 @@
 
 https://docs.aws.amazon.com/lambda/latest/dg/foundation-iac.html
 
+* add custom lambda authorizer
 * add tests
 * use http api (not api) which is cheaper apparently
 * setup and connect to DB
