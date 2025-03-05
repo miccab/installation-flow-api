@@ -26,6 +26,13 @@ Resources:
     Properties:
       Name: !Sub '${AWS::StackName}-api'
       StageName: !Ref Environment
+  CustomAuthorizerFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: io.micronaut.function.aws.proxy.payload1.ApiGatewayProxyRequestEventFunction
+      CodeUri: target/installation-flow-api-1.0-SNAPSHOT.jar
+      Policies:
+        - AWSLambdaBasicExecutionRole
   MicronautLambdaFunction:
     Type: AWS::Serverless::Function
     Properties:
