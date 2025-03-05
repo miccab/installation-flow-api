@@ -29,11 +29,18 @@
 https://docs.aws.amazon.com/lambda/latest/dg/foundation-iac.html
 
 * add tests
-* setup authorizer
-  * https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-use-lambda-authorizer.html
-  * aws cognito
 * use http api (not api) which is cheaper apparently
 * setup and connect to DB
+
+# Later
+* setup authorizer
+  * https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-use-lambda-authorizer.html
+  * aws cognito - played manually
+    * create user pool
+    * add user
+    * add authorizer to api gateway
+    * assign authorizer to resources method
+    * deploy api manually
 
 
 # AWS infra
