@@ -2,12 +2,10 @@ package org.miccab.installation.flow.api.controller;
 
 import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Get;
-import jakarta.inject.Singleton;
 
 import java.util.Map;
 
 @Controller("/installations")
-@Singleton
 public class InstallationController {
     @Get
     public Map<String, Object> list() {
