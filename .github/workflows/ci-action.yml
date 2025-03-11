@@ -41,5 +41,5 @@ jobs:
         with:
           use-installer: true
       - name: SAM Deploy
-        run: sam deploy --s3-bucket installation-flow-api-bucket-${{ vars.ENVIRONMENT }} --stack-name installation-flow-api-${{ vars.ENVIRONMENT }} --capabilities CAPABILITY_IAM --parameter-overrides Environment=${{ vars.ENVIRONMENT }} --no-fail-on-empty-changeset --no-confirm-changeset --force-upload
+        run: sam deploy --s3-bucket installation-flow-api-bucket-${{ vars.ENVIRONMENT }} --stack-name installation-flow-api-${{ vars.ENVIRONMENT }} --capabilities CAPABILITY_IAM --parameter-overrides Environment=${{ vars.ENVIRONMENT }} AUTHORIZATION_KEY=${{ secrets.AUTHORIZATION_KEY }}  --no-fail-on-empty-changeset --no-confirm-changeset --force-upload
 

@@ -1,5 +1,6 @@
 package org.miccab.installation.flow.api.authorizer;
 
+import io.micronaut.context.annotation.Value;
 import io.micronaut.function.aws.MicronautRequestHandler;
 
 import java.util.HashMap;
@@ -7,6 +8,9 @@ import java.util.Map;
 import java.util.Optional;
 
 public class SimpleAuthorizer extends MicronautRequestHandler<Map<String, Object>, Map<String, Object>> {
+    @Value("${AUTHORIZATION_KEY}")
+    private String authorizationKey;
+
     @Override
     public Map<String, Object> execute(Map<String, Object> input) {
         boolean authorized = isAuthorized(input);
@@ -34,6 +38,6 @@ public class SimpleAuthorizer extends MicronautRequestHandler<Map<String, Object
         String authorizationHeader = Optional.ofNullable(headers)
                 .map(h -> h.get("Authorization"))
                 .orElse(null);
-        return "my_secret".equals(authorizationHeader);
+        return authorizationKey.equals(authorizationHeader);
     }
 }

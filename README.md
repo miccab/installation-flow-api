@@ -1,3 +1,9 @@
+# how to invoke
+
+```bash
+curl -X GET https://sp1v9s4rb6.execute-api.us-east-1.amazonaws.com/dev/installations -H "Content-Type: application/json" -H 'Authorization: TODO' 
+```
+
 # Business requirements
 
 * create installation
