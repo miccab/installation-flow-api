@@ -50,7 +50,7 @@ Resources:
             Auth:
               Authorizer:
                 FunctionArn: !GetAtt CustomAuthorizerFunction.Arn
-                FunctionPayloadType: REQUESTadd
+                FunctionPayloadType: REQUEST
                 Identity:
                   Headers: Authorization
 
