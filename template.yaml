@@ -47,10 +47,12 @@ Resources:
             RestApiId: !Ref ApiGateway
             Path: /{proxy+}
             Method: ANY
-            Authorizer:
-              FunctionArn: !GetAtt CustomAuthorizerFunction.Arn
-              Identity:
-                Header: Authorization
+            Auth:
+              Authorizer:
+                FunctionArn: !GetAtt CustomAuthorizerFunction.Arn
+                FunctionPayloadType: REQUESTadd
+                Identity:
+                  Headers: Authorization
 
 Outputs:
   HttpApi:
