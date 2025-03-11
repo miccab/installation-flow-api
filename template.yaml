@@ -3,6 +3,8 @@ Transform: AWS::Serverless-2016-10-31
 Description: Micronaut AWS Lambda Application
 
 Parameters:
+  AuthorizationKey:
+    Type: String
   Environment:
     Type: String
     Default: dev
@@ -19,6 +21,7 @@ Globals:
     Environment:
       Variables:
         MICRONAUT_ENVIRONMENTS: !Ref Environment
+        AUTHORIZATION_KEY: !Ref AuthorizationKey
 
 Resources:
   ApiGateway:
