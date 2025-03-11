@@ -29,7 +29,7 @@ Resources:
   CustomAuthorizerFunction:
     Type: AWS::Serverless::Function
     Properties:
-      Handler: io.micronaut.function.aws.proxy.payload1.ApiGatewayProxyRequestEventFunction
+      Handler: org.miccab.installation.flow.api.authorizer.SimpleAuthorizer
       CodeUri: target/installation-flow-api-1.0-SNAPSHOT.jar
       Policies:
         - AWSLambdaBasicExecutionRole
@@ -47,6 +47,10 @@ Resources:
             RestApiId: !Ref ApiGateway
             Path: /{proxy+}
             Method: ANY
+            Authorizer:
+              FunctionArn: !GetAtt CustomAuthorizerFunction.Arn
+              Identity:
+                Header: Authorization
 
 Outputs:
   HttpApi:
