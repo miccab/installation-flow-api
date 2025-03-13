@@ -52,6 +52,17 @@ Resources:
       CodeUri: target/installation-flow-api-1.0-SNAPSHOT.jar
       Policies:
         - AWSLambdaBasicExecutionRole
+        - PolicyName: DynamoDBAccessPolicy
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action:
+                  - dynamodb:PutItem
+                  - dynamodb:GetItem
+                  - dynamodb:UpdateItem
+                  - dynamodb:DeleteItem
+                Resource: !GetAtt InstallationTypeDynamoDBTable.Arn
       Events:
         ApiEvents:
           Type: Api
@@ -59,7 +70,25 @@ Resources:
             RestApiId: !Ref ApiGateway
             Path: /{proxy+}
             Method: ANY
+  InstallationTypeDynamoDBTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: !Sub 'InstallationType-${Environment}'
+      AttributeDefinitions:
+        - AttributeName: id
+          AttributeType: String
+        - AttributeName: name
+          AttributeType: String
+      KeySchema:
+        - AttributeName: id
+          KeyType: HASH
+      ProvisionedThroughput:
+        ReadCapacityUnits: 5
+        WriteCapacityUnits: 5
+
 
 Outputs:
   HttpApi:
     Value: !Sub "https://${ApiGateway}.execute-api.${AWS::Region}.amazonaws.com/${Environment}/"
+  InstallationTypeDynamoDBTable:
+    Value: !Ref InstallationTypeDynamoDBTable
