@@ -68,8 +68,6 @@ Resources:
       AttributeDefinitions:
         - AttributeName: id
           AttributeType: String
-        - AttributeName: name
-          AttributeType: String
       KeySchema:
         - AttributeName: id
           KeyType: HASH
