@@ -67,7 +67,7 @@ Resources:
       TableName: !Sub 'InstallationType-${Environment}'
       AttributeDefinitions:
         - AttributeName: id
-          AttributeType: String
+          AttributeType: S
       KeySchema:
         - AttributeName: id
           KeyType: HASH
