@@ -90,6 +90,19 @@ https://docs.aws.amazon.com/lambda/latest/dg/foundation-iac.html
     ]
 }
 ```
+```json
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "VisualEditor0",
+            "Effect": "Allow",
+            "Action": "dynamodb:DescribeTable",
+            "Resource": "*"
+        }
+    ]
+}
+```
 * create S3 bucket
 * follow guide: https://micronaut-projects.github.io/micronaut-aws/4.8.0/guide/#amazonApiGateway
 * best to create app using micronaout launcher
