@@ -45,6 +45,19 @@ Resources:
       CodeUri: target/installation-flow-api-1.0-SNAPSHOT.jar
       Policies:
         - AWSLambdaBasicExecutionRole
+  InstallationTypeDynamoDBTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: !Sub 'InstallationType-${Environment}'
+      AttributeDefinitions:
+        - AttributeName: id
+          AttributeType: S
+      KeySchema:
+        - AttributeName: id
+          KeyType: HASH
+      ProvisionedThroughput:
+        ReadCapacityUnits: 5
+        WriteCapacityUnits: 5
   MicronautLambdaFunction:
     Type: AWS::Serverless::Function
     Properties:
@@ -61,20 +74,6 @@ Resources:
             RestApiId: !Ref ApiGateway
             Path: /{proxy+}
             Method: ANY
-  InstallationTypeDynamoDBTable:
-    Type: AWS::DynamoDB::Table
-    Properties:
-      TableName: !Sub 'InstallationType-${Environment}'
-      AttributeDefinitions:
-        - AttributeName: id
-          AttributeType: S
-      KeySchema:
-        - AttributeName: id
-          KeyType: HASH
-      ProvisionedThroughput:
-        ReadCapacityUnits: 5
-        WriteCapacityUnits: 5
-
 
 Outputs:
   HttpApi:
