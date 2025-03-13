@@ -52,17 +52,8 @@ Resources:
       CodeUri: target/installation-flow-api-1.0-SNAPSHOT.jar
       Policies:
         - AWSLambdaBasicExecutionRole
-        - PolicyName: DynamoDBAccessPolicy
-          PolicyDocument:
-            Version: '2012-10-17'
-            Statement:
-              - Effect: Allow
-                Action:
-                  - dynamodb:PutItem
-                  - dynamodb:GetItem
-                  - dynamodb:UpdateItem
-                  - dynamodb:DeleteItem
-                Resource: !GetAtt InstallationTypeDynamoDBTable.Arn
+        - DynamoDBCrudPolicy:
+            TableName: !GetAtt InstallationTypeDynamoDBTable.TableName
       Events:
         ApiEvents:
           Type: Api
