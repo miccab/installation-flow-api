@@ -81,7 +81,7 @@ Resources:
   DocumentDBCluster:
     Type: AWS::DocDB::DBCluster
     Properties:
-      DBClusterIdentifier: InstallationFlowCluster-${Environment}
+      DBClusterIdentifier: InstallationFlowCluster${Environment}
       MasterUsername: ${DocumentDbMasterUserName}
       MasterUserPassword: ${DocumentDbMasterUserPassword}
   DocumentDBInstance:
