@@ -41,5 +41,5 @@ jobs:
         with:
           use-installer: true
       - name: SAM Deploy
-        run: sam deploy --s3-bucket installation-flow-api-bucket-${{ vars.ENVIRONMENT }} --stack-name installation-flow-api-${{ vars.ENVIRONMENT }} --capabilities CAPABILITY_IAM --parameter-overrides Environment=${{ vars.ENVIRONMENT }} AuthorizationKey=${{ secrets.AUTHORIZATION_KEY }}  --no-fail-on-empty-changeset --no-confirm-changeset --force-upload
+        run: sam deploy --s3-bucket installation-flow-api-bucket-${{ vars.ENVIRONMENT }} --stack-name installation-flow-api-${{ vars.ENVIRONMENT }} --capabilities CAPABILITY_IAM --parameter-overrides Environment=${{ vars.ENVIRONMENT }} AuthorizationKey=${{ secrets.AUTHORIZATION_KEY }}  DocumentDbMasterUserName=${{ secrets.DOCUMENT_DB_MASTER_USER_NAME }} DocumentDbMasterUserPassword=${{ secrets.DOCUMENT_DB_MASTER_USER_PASSWORD }}  --no-fail-on-empty-changeset --no-confirm-changeset --force-upload
 

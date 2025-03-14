@@ -3,6 +3,10 @@ Transform: AWS::Serverless-2016-10-31
 Description: Micronaut AWS Lambda Application
 
 Parameters:
+  DocumentDbMasterUserName:
+    Type: String
+  DocumentDbMasterUserPassword:
+    Type: String
   AuthorizationKey:
     Type: String
   Environment:
@@ -45,19 +49,19 @@ Resources:
       CodeUri: target/installation-flow-api-1.0-SNAPSHOT.jar
       Policies:
         - AWSLambdaBasicExecutionRole
-  InstallationTypeDynamoDBTable:
-    Type: AWS::DynamoDB::Table
-    Properties:
-      TableName: !Sub 'InstallationType-${Environment}'
-      AttributeDefinitions:
-        - AttributeName: id
-          AttributeType: S
-      KeySchema:
-        - AttributeName: id
-          KeyType: HASH
-      ProvisionedThroughput:
-        ReadCapacityUnits: 5
-        WriteCapacityUnits: 5
+#  InstallationTypeDynamoDBTable:
+#    Type: AWS::DynamoDB::Table
+#    Properties:
+#      TableName: !Sub 'InstallationType-${Environment}'
+#      AttributeDefinitions:
+#        - AttributeName: id
+#          AttributeType: S
+#      KeySchema:
+#        - AttributeName: id
+#          KeyType: HASH
+#      ProvisionedThroughput:
+#        ReadCapacityUnits: 5
+#        WriteCapacityUnits: 5
   MicronautLambdaFunction:
     Type: AWS::Serverless::Function
     Properties:
@@ -65,8 +69,8 @@ Resources:
       CodeUri: target/installation-flow-api-1.0-SNAPSHOT.jar
       Policies:
         - AWSLambdaBasicExecutionRole
-        - DynamoDBCrudPolicy:
-            TableName: !Sub 'InstallationType-${Environment}'
+#        - DynamoDBCrudPolicy:
+#            TableName: !Sub 'InstallationType-${Environment}'
       Events:
         ApiEvents:
           Type: Api
@@ -74,9 +78,21 @@ Resources:
             RestApiId: !Ref ApiGateway
             Path: /{proxy+}
             Method: ANY
+  DocumentDBCluster:
+    Type: AWS::DocDB::DBCluster
+    Properties:
+      DBClusterIdentifier: InstallationFlowCluster-${Environment}
+      MasterUsername: ${DocumentDbMasterUserName}
+      MasterUserPassword: ${DocumentDbMasterUserPassword}
+  DocumentDBInstance:
+    Type: AWS::DocDB::DBInstance
+    Properties:
+      DBClusterIdentifier: !Ref DocumentDBCluster
+      DBInstanceClass: db.t3.medium
+      DBInstanceIdentifier: InstallationFlowInstance-${Environment}
 
 Outputs:
   HttpApi:
     Value: !Sub "https://${ApiGateway}.execute-api.${AWS::Region}.amazonaws.com/${Environment}/"
-  InstallationTypeDynamoDBTable:
-    Value: !Ref InstallationTypeDynamoDBTable
+#  InstallationTypeDynamoDBTable:
+#    Value: !Ref InstallationTypeDynamoDBTable
