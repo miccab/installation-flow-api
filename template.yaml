@@ -81,7 +81,7 @@ Resources:
   DocumentDBCluster:
     Type: AWS::DocDB::DBCluster
     Properties:
-      DBClusterIdentifier: InstallationFlowCluster${Environment}
+      DBClusterIdentifier: !Sub 'InstallationFlowCluster-${Environment}'
       MasterUsername: ${DocumentDbMasterUserName}
       MasterUserPassword: ${DocumentDbMasterUserPassword}
   DocumentDBInstance:
@@ -89,7 +89,7 @@ Resources:
     Properties:
       DBClusterIdentifier: !Ref DocumentDBCluster
       DBInstanceClass: db.t3.medium
-      DBInstanceIdentifier: InstallationFlowInstance-${Environment}
+      DBInstanceIdentifier: !Sub 'InstallationFlowInstance-${Environment}'
 
 Outputs:
   HttpApi:
