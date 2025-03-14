@@ -82,8 +82,8 @@ Resources:
     Type: AWS::DocDB::DBCluster
     Properties:
       DBClusterIdentifier: !Sub 'InstallationFlowCluster-${Environment}'
-      MasterUsername: ${DocumentDbMasterUserName}
-      MasterUserPassword: ${DocumentDbMasterUserPassword}
+      MasterUsername: !Sub '${DocumentDbMasterUserName}'
+      MasterUserPassword: !Sub '${DocumentDbMasterUserPassword}'
   DocumentDBInstance:
     Type: AWS::DocDB::DBInstance
     Properties:
